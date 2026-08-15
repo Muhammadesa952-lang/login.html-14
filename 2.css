@@ -1,0 +1,59 @@
+header h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 38px;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+header p {
+  font-size: 16px;
+  color: #d9e6e1;
+  letter-spacing: 2px;
+}
+
+/* =====container===== */
+
+.container {
+  width: 90%;
+  max-width: 1250px;
+  margin: 55px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* ====CARD===== */
+
+.card {
+  position: relative;
+  min-height: 230px;
+  padding: 30px 20px;
+  text-align: center;
+
+  background: linear-gradient(
+    145deg,
+    rgb(19, 70, 57, 0.95) rgba(7, 37, 29, 0.95)
+  );
+
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(212, 175, 55, 0.08);
+  border-radius: 50%;
+  top: -45px;
+  right: -45px;
+  transition: 0.4s;
+}
