@@ -1,0 +1,64 @@
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 15px;
+  align-items: center;
+  justify-items: center;
+  margin: 20px 0;
+}
+
+.tech-icon {
+  width: 48px;
+  height: 48px;
+  filter: grayscale(30%);
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tech-icon:hover {
+  filter: grayscale(0%);
+  transform: scale(1.15);
+}
+
+.badge-glow {
+  display: inline-block;
+  padding: 8px 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #238636, #1f6beb);
+  background-size: 200% 200%;
+  border-radius: 20px;
+  text-decoration: none;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  color: #f0f6fc;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  border-color: #58a6ff;
+}
