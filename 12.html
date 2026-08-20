@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Destination Recommendations</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">TravelExplore</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <div class="search-container">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search beaches, temples, or countries..."
+        />
+        <button id="search-btn">Search</button>
+        <button id="clear-btn">Clear</button>
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Explore Your Next Destination</h1>
+        <p>
+          Discover breathtaking beaches, sacred temples, and amazing countries
+          around the world. Start searching above!
+        </p>
+      </div>
+      <div id="results-container" class="results-grid"></div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="section">
+      <h2>About Us</h2>
+      <p>
+        Welcome to TravelExplore! We are passionate about helping travelers find
+        their ideal destinations. Whether you are looking for a peaceful beach,
+        a historic temple, or a vibrant country to explore, our recommendations
+        bring the best of the world to your fingertips.
+      </p>
+      <div class="team-grid">
+        <div class="team-card">
+          <h3>Our Mission</h3>
+          <p>To connect people with incredible travel experiences worldwide.</p>
+        </div>
+        <div class="team-card">
+          <h3>Our Vision</h3>
+          <p>
+            Making travel discovery seamless, inspiring, and accessible to all.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="section">
+      <h2>Contact Us</h2>
+      <form
+        class="contact-form"
+        onsubmit="
+          event.preventDefault();
+          alert('Message sent!');
+        "
+      ></form>
+    </section>
+  </body>
+</html>
