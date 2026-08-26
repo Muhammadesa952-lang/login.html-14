@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+header {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 {
+  margin-bottom: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 18px;
+}
+
+nav a:hover {
+  color: orange;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #ff8c00;
+  color: white;
+}
+
+.hero h2 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #222;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: white;
+  color: #222;
+}
+
+.content,
+.welcome {
+  max-width: 1000px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+.content h2,
+.welcome h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ff8c00;
+}
+
+.content p,
+.welcome p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.food-card {
+  background-color: white;
+  width: 220px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.food-card h3 {
+  color: #ff8c00;
+  margin-bottom: 10px;
+}
+
+.food-card p {
+  font-size: 15px;
+}
+
+.food-card h4 {
+  margin-top: 15px;
+  color: green;
+}
+
+form {
+  max-width: 500px;
+  margin: auto;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #ff8c00;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #222;
+}
+
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
