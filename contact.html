@@ -3,33 +3,367 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Urban Bite | Contact</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Studio Marrow — Get in touch</title>
+    <style>
+      :root {
+        --blue: #0e2f52;
+        --blue-line: #3f6a94;
+        --paper: #eef3f7;
+        --ink: #0e2f52;
+        --ink-dim: #5c7b98;
+        --accent: #e8622c;
+        --disp: "Helvetica Neue", Arial, sans-serif;
+        --mono: "Courier New", monospace;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--blue);
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 32px 32px;
+        color: var(--paper);
+        font-family: var(--disp);
+        min-height: 100vh;
+      }
+      a {
+        color: inherit;
+      }
+
+      header {
+        padding: 36px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--blue-line);
+      }
+      .logo {
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 0.04em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo .dot {
+        width: 8px;
+        height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+      }
+      header nav {
+        display: flex;
+        gap: 30px;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #a9c1d6;
+      }
+
+      .hero {
+        padding: 90px 50px 60px;
+        max-width: 900px;
+      }
+      .hero .tag {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        margin-bottom: 16px;
+      }
+      .hero h1 {
+        font-size: clamp(36px, 6vw, 64px);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+      }
+      .hero p {
+        color: #a9c1d6;
+        font-size: 16px;
+        margin-top: 20px;
+        max-width: 520px;
+        line-height: 1.6;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        border-top: 1px solid var(--blue-line);
+      }
+      .info-col {
+        padding: 60px 50px;
+        border-right: 1px solid var(--blue-line);
+      }
+      .form-col {
+        padding: 60px 50px;
+      }
+
+      .info-block {
+        margin-bottom: 40px;
+      }
+      .info-block .k {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .info-block .v {
+        font-size: 18px;
+        line-height: 1.6;
+      }
+      .info-block .v a {
+        border-bottom: 1px solid var(--blue-line);
+        padding-bottom: 2px;
+      }
+
+      .coord {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: #7c99b5;
+        margin-top: 30px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .field label {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: #a9c1d6;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--blue-line);
+        color: var(--paper);
+        font-size: 15px;
+        padding: 10px 2px;
+        font-family: var(--disp);
+        outline: none;
+      }
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: #5c7b98;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-bottom-color: var(--accent);
+      }
+      .field select option {
+        background: var(--blue);
+      }
+      .field textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+
+      .budget-pills {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .pill {
+        border: 1px solid var(--blue-line);
+        border-radius: 100px;
+        padding: 8px 16px;
+        font-size: 12px;
+        cursor: pointer;
+        color: #a9c1d6;
+      }
+      .pill.active {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: rgba(232, 98, 44, 0.08);
+      }
+
+      .submit-btn {
+        margin-top: 12px;
+        background: var(--accent);
+        color: var(--blue);
+        border: none;
+        padding: 16px 24px;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        letter-spacing: 0.02em;
+        width: fit-content;
+      }
+      .submit-btn:hover {
+        background: #f37844;
+      }
+      .success {
+        display: none;
+        color: #8fe0a8;
+        font-family: var(--mono);
+        font-size: 13px;
+        margin-top: 14px;
+      }
+      .success.show {
+        display: block;
+      }
+
+      footer {
+        padding: 40px 50px;
+        border-top: 1px solid var(--blue-line);
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: #7c99b5;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      @media (max-width: 760px) {
+        header {
+          padding: 22px;
+          flex-direction: column;
+          gap: 14px;
+          align-items: flex-start;
+        }
+        header nav {
+          display: none;
+        }
+        .hero {
+          padding: 50px 22px;
+        }
+        .split {
+          grid-template-columns: 1fr;
+        }
+        .info-col {
+          border-right: none;
+          border-bottom: 1px solid var(--blue-line);
+          padding: 40px 22px;
+        }
+        .form-col {
+          padding: 40px 22px;
+        }
+      }
+    </style>
   </head>
   <body>
     <header>
-      <h1>The Urban Bite</h1>
+      <div class="logo"><span class="dot"></span> STUDIO MARROW</div>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="menu.html">Menu</a>
-        <a href="contact.html">Contact</a>
+        <a href="#">Work</a><a href="#">Studio</a><a href="#">Contact</a>
       </nav>
     </header>
 
-    <section class="content">
-      <h2>Contact Us</h2>
+    <div class="hero">
+      <div class="tag">// NEW PROJECT INQUIRY</div>
+      <h1>Tell us what you're building.</h1>
+      <p>
+        We take on a small number of residential and civic projects each year.
+        Fill in the brief below and a partner will reply within three working
+        days.
+      </p>
+    </div>
 
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Write your message here..." rows="6"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
+    <div class="split">
+      <div class="info-col">
+        <div class="info-block">
+          <div class="k">Studio</div>
+          <div class="v">14 Founders Lane<br />Unit 3B, Kochi 682001</div>
+        </div>
+        <div class="info-block">
+          <div class="k">Direct</div>
+          <div class="v">
+            <a href="mailto:muhammadesa952@gmail.com"
+              >muhammadesa952@gmail.com</a
+            ><br /><a href="tel:+923158978413">+92 315 897 8413</a>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="k">Hours</div>
+          <div class="v">
+            Mon–Fri, 9:30 – 18:30<br />Site visits by appointment
+          </div>
+        </div>
+        <div class="coord">
+          10.0159° N, 76.2803° E — STUDIO MARROW EST. 2026
+        </div>
+      </div>
+
+      <div class="form-col">
+        <form onsubmit="submitForm(event)">
+          <div class="field">
+            <label>Name</label>
+            <input type="text" placeholder="Your full name" required />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label>Project type</label>
+            <select>
+              <option>Residential — new build</option>
+              <option>Residential — renovation</option>
+              <option>Civic / institutional</option>
+              <option>Interior only</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Approximate budget</label>
+            <div class="budget-pills">
+              <div class="pill" onclick="selectPill(this)">Under ₹50L</div>
+              <div class="pill active" onclick="selectPill(this)">
+                ₹50L – 1.5Cr
+              </div>
+              <div class="pill" onclick="selectPill(this)">₹1.5Cr – 4Cr</div>
+              <div class="pill" onclick="selectPill(this)">Above ₹4Cr</div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Tell us about the project</label>
+            <textarea
+              placeholder="Site, timeline, and what you have in mind..."
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send inquiry</button>
+          <div class="success" id="success">
+            ✓ Received — we'll be in touch within 3 working days.
+          </div>
+        </form>
+      </div>
+    </div>
 
     <footer>
-      <p>© 2026 The Urban Bite | Muhammad Esa All Rights Reserved</p>
+      <div>© 2026 STUDIO MARROW</div>
+      <div>REG. NO. AR/2016/0442</div>
     </footer>
+
+    <script>
+      function selectPill(el) {
+        document
+          .querySelectorAll(".pill")
+          .forEach((p) => p.classList.remove("active"));
+        el.classList.add("active");
+      }
+      function submitForm(e) {
+        e.preventDefault();
+        document.getElementById("success").classList.add("show");
+        e.target.querySelector(".submit-btn").textContent = "Sent ✓";
+      }
+    </script>
   </body>
 </html>
