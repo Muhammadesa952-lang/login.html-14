@@ -1,0 +1,131 @@
+/* 05-animations-utilities.css — keyframes, loaders, and small helpers */
+
+/* Keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Animation helpers */
+.animate-fade-in {
+  animation: fade-in 0.4s ease both;
+}
+.animate-slide-up {
+  animation: slide-up 0.5s ease both;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* Skeleton placeholder */
+.skeleton {
+  background: var(--color-border);
+  border-radius: var(--radius-md);
+  min-height: 1em;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+/* Hover lift */
+.hover-lift {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Visually hidden (still readable by screen readers) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Spacing + text utilities */
+.mt-4 {
+  margin-top: var(--space-4);
+}
+.mt-8 {
+  margin-top: var(--space-8);
+}
+.mb-4 {
+  margin-bottom: var(--space-4);
+}
+.mb-8 {
+  margin-bottom: var(--space-8);
+}
+.p-4 {
+  padding: var(--space-4);
+}
+.p-8 {
+  padding: var(--space-8);
+}
+
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 48rem) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
