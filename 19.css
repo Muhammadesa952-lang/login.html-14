@@ -1,0 +1,40 @@
+/* responsive grid, no media queries needed */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+}
+
+/* sidebar + content that collapses on small screens */
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+.with-sidebar > :first-child {
+  flex: 1 1 14rem;
+}
+.with-sidebar > :last-child {
+  flex: 999 1 24rem;
+  min-width: 0;
+}
+
+.center {
+  display: grid;
+  place-items: center;
+}
+.between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
