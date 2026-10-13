@@ -1,0 +1,18 @@
+/* layout.css — containers, stacks, grids */
+.container {
+  width: min(100% - 2 * var(--space-4), 72rem);
+  margin-inline: auto;
+}
+.container--narrow { width: min(100% - 2 * var(--space-4), 44rem); margin-inline: auto; }
+
+.section { padding-block: var(--space-12); }
+
+/* vertical rhythm */
+.stack > * + * { margin-block-start: var(--stack-gap, var(--space-4)); }
+
+/* horizontal row that wraps */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-gap, var(--space-3));
+  align-items: center;
