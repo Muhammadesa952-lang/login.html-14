@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Code Playground</title>
+    <style>
+      :root {
+        --bg: #eef2f7;
+        --panel: #ffffff;
+        --ink: #1b2430;
+        --muted: #5d6b7e;
+        --line: #cfd8e3;
+        --accent: #2457d6;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 20px;
+        background: var(--panel);
+        border-bottom: 1px solid var(--line);
+      }
+      h1 {
+        font-size: 1.1rem;
+        margin: 0;
+      }
+      p.hint {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      button {
+        font: inherit;
+        padding: 8px 16px;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button.ghost {
+        background: transparent;
+        color: var(--accent);
+      }
+      button:focus-visible,
+      textarea:focus-visible {
+        outline: 3px solid #9db8f5;
+        outline-offset: 2px;
+      }
+      main {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding: 12px;
+        min-height: 0;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        min-height: 0;
+      }
+      section h2 {
+        margin: 0;
+        padding: 8px 14px;
+        font-size: 0.9rem;
+        border-bottom: 1px solid var(--line);
+      }
+      textarea {
+        flex: 1;
+        border: 0;
+        padding: 14px;
+        font:
+          14px/1.5 ui-monospace,
+          Consolas,
+          monospace;
+        color: var(--ink);
+        resize: none;
+        tab-size: 2;
+      }
+      iframe {
+        flex: 1;
+        border: 0;
+        background: #fff;
+      }
+      @media (max-width: 720px) {
+        main {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr;
+        }
+        header {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Code Playground</h1>
+        <p class="hint">
+          Edit the code on the left. The result updates as you type.
+        </p>
+      </div>
+      <div>
+        <button class="ghost" id="reset">Reset</button>
+        <button id="download">Download page</button>
+      </div>
+    </header>
+    <main>
+      <section>
+        <h2>Your code (HTML, CSS, JavaScript)</h2>
+        <textarea
+          id="code"
+          spellcheck="false"
+          aria-label="Code editor"
+        ></textarea>
+      </section>
+      <section>
+        <h2>Result</h2>
+        <iframe id="out" title="Result" sandbox="allow-scripts"></iframe>
+      </section>
+    </main>
+
+    <script>
+      const starter = `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { font-family: sans-serif; text-align: center; padding: 40px; }
+  button { font-size: 1.1rem; padding: 10px 20px; }
+  #count { font-size: 3rem; margin: 20px 0; }
+</style>
+</head>
+<body>
+  <h1>Hello, world!</h1>
+  <div id="count">0</div>
+  <button id="add">Add one</button>
+
+  <script>
+    let n = 0;
+    document.getElementById("add").addEventListener("click", () => {
+      n++;
+      document.getElementById("count").textContent = n;
+    });
+  <\/script>
+</body>
+</html>`;
+
+      const code = document.getElementById("code");
+      const out = document.getElementById("out");
+
+      function run() {
+        out.srcdoc = code.value;
+      }
+
+      code.value = starter;
+      code.addEventListener("input", run);
+      code.addEventListener("keydown", (e) => {
+        if (e.key === "Tab") {
+          e.preventDefault();
+          const s = code.selectionStart;
+          code.setRangeText("  ", s, code.selectionEnd, "end");
+          run();
+        }
+      });
+      document.getElementById("reset").addEventListener("click", () => {
+        code.value = starter;
+        run();
+      });
+      document.getElementById("download").addEventListener("click", () => {
+        const blob = new Blob([code.value], { type: "text/html" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "my-page.html";
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+      run();
+    </script>
+  </body>
+</html>
