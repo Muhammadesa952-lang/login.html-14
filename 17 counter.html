@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JavaScript Counter</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: #f3f4f6;
+      }
+      .box {
+        text-align: center;
+        background: #fff;
+        padding: 32px 40px;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
+      #count {
+        font-size: 4rem;
+        margin: 10px 0 20px;
+        font-variant-numeric: tabular-nums;
+      }
+      button {
+        font-size: 1.2rem;
+        padding: 8px 18px;
+        margin: 0 4px;
+        border-radius: 8px;
+        border: 1px solid #9ca3af;
+        background: #fff;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #e5e7eb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1>Counter</h1>
+      <div id="count">0</div>
+      <button id="minus">− 1</button>
+      <button id="reset">Reset</button>
+      <button id="plus">+ 1</button>
+    </div>
+
+    <script>
+      let count = 0;
+      const display = document.getElementById("count");
+
+      function update() {
+        display.textContent = count;
+        display.style.color =
+          count > 0 ? "green" : count < 0 ? "crimson" : "black";
+      }
+
+      document.getElementById("plus").addEventListener("click", () => {
+        count++;
+        update();
+      });
+      document.getElementById("minus").addEventListener("click", () => {
+        count--;
+        update();
+      });
+      document.getElementById("reset").addEventListener("click", () => {
+        count = 0;
+        update();
+      });
+    </script>
+  </body>
+</html>
